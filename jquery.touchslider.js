@@ -410,7 +410,7 @@ http://touchslider.com
 		function changedView(index) {
 			pagination.removeClass(options.currentClass)
 				.eq(index).addClass(options.currentClass);
-			options.callback.call(this, index);
+			options.callback.call(container, index);
 		}
 
 		// set item or next
