@@ -31,6 +31,7 @@ http://touchslider.com
 				duration: 350,
 				mouseTouch: true,
 				page: 0,
+        continuous: true,
 				callback: function() {}
 				// [container, scroller]
 			}, options);
@@ -121,9 +122,17 @@ http://touchslider.com
 				to: function(toIndex, opt) {
 					opt = opt || {};
 					if (toIndex >= slides.length) {
-						toIndex = 0;
+						if(options.continuous){
+							toIndex = 0;
+						} else { 
+							return false; 
+						}
 					} else if (toIndex < 0){
-						toIndex = slides.length - 1;
+						if(options.continuous){
+							toIndex = slides.length - 1;
+						} else { 
+							return false; 
+						}
 					}
 					var duration = options.duration,
 						node = slides.eq(toIndex),
