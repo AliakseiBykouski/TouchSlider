@@ -410,6 +410,18 @@ http://touchslider.com
 		function changedView(index) {
 			pagination.removeClass(options.currentClass)
 				.eq(index).addClass(options.currentClass);
+
+      if (!options.continuous) {
+        // enable/disable controls
+        container.find(options.prev + '.disabled, ' + options.next + '.disabled').removeClass('disabled');
+        if (index == 0) {
+          container.find(options.prev).addClass('disabled');
+        }
+        if (index == (slides.length - 1)) {
+          container.find(options.next).addClass('disabled');
+        }
+      }
+
 			options.callback.call(container, index);
 		}
 
